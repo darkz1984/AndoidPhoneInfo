@@ -5,6 +5,8 @@ import android.content.Context;
 import android.telephony.TelephonyManager;
 
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 系统工具类
@@ -17,6 +19,24 @@ public class SystemUtil {
      *
      * @return 返回当前系统语言。例如：当前设置的是“中文-中国”，则返回“zh-CN”
      */
+
+    /**
+     * 去除字符串中的空格、回车、换行符、制表符等
+     * @param str
+     * @return     */
+    // 原文：https://blog.csdn.net/zhangzehai2234/article/details/53525598?utm_source=copy
+    public static String replaceSpecialStr(String str) {
+        String repl = "";
+        if (str!=null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            repl = m.replaceAll("");
+        }
+        return repl;
+    }
+
+
+
     public static String getSystemLanguage() {
         return Locale.getDefault().getLanguage();
     }

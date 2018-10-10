@@ -2,6 +2,8 @@ package co.darkz.andoidphoneinfo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,10 +20,31 @@ public class MainActivity extends AppCompatActivity {
 //    ListView phone_info_lv = (ListView) findViewById(R.id.hardware_info);
 //    String[] phone_info = showSystemParameter();
 
+//    允许显示menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.add_item:
+                Toast.makeText(this,"你点击了add菜单项",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.remove_item:
+                Toast.makeText(this,"你点击了remove菜单项",Toast.LENGTH_SHORT).show();
+                default:
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 //        ArrayAdapter<string> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, data);
 //        ListView hardware_info = (ListView) findViewById(R.id.hardware_info);
